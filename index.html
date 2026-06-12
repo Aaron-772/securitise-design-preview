@@ -113,8 +113,22 @@
 
   /* ============ articles (the standard) ============ */
   .articles{counter-reset:art;display:grid;gap:14px}
-  .article{display:grid;grid-template-columns:clamp(70px,8vw,110px) 1fr auto;gap:clamp(18px,3vw,44px);align-items:center;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,40px);border:1px solid var(--hairline);border-left:3px solid var(--gold);background:rgba(255,255,255,.6);transition:background .3s,transform .25s,box-shadow .25s}
+  .article{display:grid;grid-template-columns:clamp(70px,8vw,110px) 1fr auto;gap:clamp(18px,3vw,44px);align-items:start;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,40px);border:1px solid var(--hairline);border-left:3px solid var(--gold);background:rgba(255,255,255,.6);transition:background .3s,transform .25s,box-shadow .25s}
   .article:hover{background:#FCFAF4;transform:translateX(4px);box-shadow:0 10px 26px rgba(0,53,30,.08)}
+  .article__tag{align-self:start;margin-top:8px}
+  /* drill-downs */
+  .art-more{margin-top:6px}
+  .art-more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);padding:10px 0 2px;transition:color .2s}
+  .art-more summary:hover{color:var(--brg)}
+  .art-more summary::-webkit-details-marker{display:none}
+  .art-more summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--gold);font-size:13px;line-height:1;transition:transform .25s}
+  .art-more[open] summary::before{content:"−"}
+  .art-more__body{padding:12px 0 8px;max-width:580px;border-top:1px dashed var(--hairline);margin-top:10px}
+  .art-more__body h4{font-family:var(--serif);font-weight:500;font-size:18.5px;color:var(--brg);margin-bottom:8px}
+  .art-more__body p{font-size:15px;color:var(--ink-soft);margin-bottom:10px}
+  .art-more__body ul{list-style:none;margin-top:2px}
+  .art-more__body li{font-size:14.5px;color:var(--ink-soft);padding:4px 0 4px 22px;position:relative}
+  .art-more__body li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:600}
   .article__no{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4.6vw,64px);line-height:1;color:var(--gold);font-feature-settings:"lnum"}
   .article h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,30px);color:var(--brg);margin-bottom:8px;line-height:1.2}
   .article p{max-width:560px;color:var(--ink-soft);font-size:16px}
@@ -224,6 +238,53 @@
   }
 </style>
 <script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "Securitise",
+      "url": "https://securitise.uk/",
+      "description": "Securitise is a security-first managed service provider (MSP) for UK businesses of 20-150 people. Every client is built on CIS Controls, certified to Cyber Essentials Plus as standard, and supported exclusively by second-line engineers and above.",
+      "email": "hello@securitise.uk",
+      "vatID": "GB454845662",
+      "address": {"@type": "PostalAddress", "streetAddress": "20-22 Wenlock Road", "addressLocality": "London", "postalCode": "N1 7GU", "addressCountry": "GB"},
+      "areaServed": {"@type": "Country", "name": "United Kingdom"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a security-first MSP actually do differently?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A security-first MSP builds your IT on a recognised security framework before taking on day-to-day support. Securitise implements the CIS Controls - the prioritised safeguards used worldwide to stop ransomware, phishing and account takeover - as the baseline for every UK business it manages, before anything else is done."}
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Cyber Essentials Plus matter for a UK SME?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Cyber Essentials Plus is the UK government-backed cyber security certification in which an independent assessor tests your defences. It is increasingly required to bid for public-sector contracts, expected in enterprise supply chains, and asked about on cyber insurance questionnaires. Securitise includes Cyber Essentials Plus certification in onboarding for every client."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is Securitise support different from a normal IT helpdesk?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Traditional IT support puts a script-reading first line between you and the people who can fix things. Securitise has no first line: every call and ticket is answered by a second-line engineer or above, with a maximum first-response time committed in writing in the contract."}
+        },
+        {
+          "@type": "Question",
+          "name": "What do Securitise clients actually see for their money?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Every Securitise client receives the Friday Report: a plain-English weekly account of the phishing emails blocked, the vulnerabilities patched, the backups tested and what is planned next. It makes 24/7 proactive monitoring visible and is readable in three minutes."}
+        },
+        {
+          "@type": "Question",
+          "name": "Who is Securitise right for?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Securitise is a boutique, founder-led security-first IT practice for UK businesses of roughly 20-150 people that want security and IT handled to one certified standard. It takes on a limited number of new clients each quarter and is not suited to price-led or break-fix buyers."}
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -343,6 +404,18 @@
           <div>
             <h3>Security precedes everything.</h3>
             <p>It is not a product we sell you. Every environment is built on the CIS controls — the framework designed to stop real-world attacks — before anything else is done.</p>
+            <details class="art-more">
+              <summary>In practice</summary>
+              <div class="art-more__body">
+                <h4>What does a security-first MSP actually do differently?</h4>
+                <p>A security-first MSP builds your IT on a recognised security framework before taking on day-to-day support. Securitise implements the CIS Controls — the prioritised safeguards used worldwide to stop ransomware, phishing and account takeover — as the baseline for every UK business we manage.</p>
+                <ul>
+                  <li>CIS Controls implemented as standard, not quoted as extras</li>
+                  <li>Microsoft 365, devices and backups hardened before go-live</li>
+                  <li>One certified configuration standard across every client</li>
+                </ul>
+              </div>
+            </details>
           </div>
           <span class="article__tag">Foundation</span>
         </div>
@@ -351,6 +424,18 @@
           <div>
             <h3>Certification is included, not sold.</h3>
             <p>Every client is taken to Cyber Essentials Plus — the UK government-backed, independently assessed certification that insurers and contracts increasingly demand.</p>
+            <details class="art-more">
+              <summary>In practice</summary>
+              <div class="art-more__body">
+                <h4>Why does Cyber Essentials Plus matter for a UK SME?</h4>
+                <p>Cyber Essentials Plus is the UK government-backed cyber security certification in which an independent assessor tests your defences. It is increasingly required to bid for public-sector contracts, expected in enterprise supply chains, and asked about on cyber insurance questionnaires. Securitise includes CE+ certification in onboarding for every client — within <span style="color:var(--gold)">[90]</span> days.</p>
+                <ul>
+                  <li>Bid-ready for contracts that require Cyber Essentials</li>
+                  <li>Insurer questionnaires answered with evidence, not hope</li>
+                  <li>Re-certified every year as part of the service</li>
+                </ul>
+              </div>
+            </details>
           </div>
           <span class="article__tag">Certified</span>
         </div>
@@ -359,6 +444,18 @@
           <div>
             <h3>No client speaks to a script.</h3>
             <p>There is no first line here. Every matter is handled by a second-line engineer or above — someone with the judgement and the authority to resolve it, first time.</p>
+            <details class="art-more">
+              <summary>In practice</summary>
+              <div class="art-more__body">
+                <h4>How is this different from a normal IT helpdesk?</h4>
+                <p>Traditional IT support puts a script-reading first line between you and the people who can fix things — that is why tickets bounce for days. Securitise deleted that tier. Every call and ticket is answered by a second-line engineer or above, with a maximum first-response time of <span style="color:var(--gold)">[X]</span> minutes committed in writing.</p>
+                <ul>
+                  <li>No call queues, no triage scripts, no escalation theatre</li>
+                  <li>A named engineer who knows your business and your history</li>
+                  <li>Response times in the contract, not the brochure</li>
+                </ul>
+              </div>
+            </details>
           </div>
           <span class="article__tag">Senior only</span>
         </div>
@@ -367,6 +464,18 @@
           <div>
             <h3>The work is shown, not implied.</h3>
             <p>Monitoring runs day and night, and what it catches is written up every Friday in plain English. You will never have to wonder what you are paying for.</p>
+            <details class="art-more">
+              <summary>In practice</summary>
+              <div class="art-more__body">
+                <h4>What do I actually see for my money?</h4>
+                <p>Every Securitise client receives the Friday Report: a plain-English weekly account of the phishing emails blocked, the vulnerabilities patched, the backups tested and what is planned next. It is readable in three minutes and written for a business owner, not an engineer — proactive 24/7 monitoring, made visible.</p>
+                <ul>
+                  <li>Weekly written evidence of threats stopped and work done</li>
+                  <li>Backup restores tested and timed — recovery proven, not assumed</li>
+                  <li>Forward notice of costs: renewals and replacements flagged early</li>
+                </ul>
+              </div>
+            </details>
           </div>
           <span class="article__tag">Evidenced</span>
         </div>
@@ -375,6 +484,18 @@
           <div>
             <h3>Few clients, by design.</h3>
             <p>A deliberately small client list is what makes the first four articles possible. We would rather decline good business than dilute the standard of care.</p>
+            <details class="art-more">
+              <summary>In practice</summary>
+              <div class="art-more__body">
+                <h4>Who is Securitise right for?</h4>
+                <p>Securitise is a boutique, founder-led IT practice for UK businesses of roughly 20–150 people that want security and IT handled to one certified standard by people they can name. We take on a limited number of new clients each quarter, and the discovery call assesses fit on both sides — honestly.</p>
+                <ul>
+                  <li>UK SMEs that treat their operations seriously</li>
+                  <li>A named senior engineer, not a rotating queue</li>
+                  <li>Not for price-led or break-fix buyers — we say so up front</li>
+                </ul>
+              </div>
+            </details>
           </div>
           <span class="article__tag">Boutique</span>
         </div>
