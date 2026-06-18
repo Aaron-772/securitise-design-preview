@@ -310,18 +310,28 @@
           <!-- large faint keyhole-shield watermark, true to the logo, drawn as an
                engraved OUTLINE framework (shield + keyhole bulbs + slots + pins), centred -->
           <svg class="shield-wm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs><clipPath id="wmClip"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath></defs>
-            <g fill="none" stroke="#B5924A" stroke-width="0.7" stroke-linejoin="round">
-              <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/>
-              <g clip-path="url(#wmClip)">
-                <rect x="49.8" y="26.7" width="48" height="8" rx="4" transform="rotate(10.93 49.8 30.7)"/>
-                <rect x="49.8" y="65" width="48" height="8" rx="4" transform="rotate(190.93 49.8 69)"/>
-              </g>
-              <circle cx="49.8" cy="30.7" r="9.9"/>
-              <circle cx="49.8" cy="69" r="9.9"/>
-              <circle cx="49.8" cy="30.7" r="4"/>
-              <circle cx="49.8" cy="69" r="4"/>
-            </g>
+            <defs>
+              <clipPath id="wmClip"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath>
+              <!-- keyhole outlines = union silhouette (white) minus inset (black) → a clean thin ring, no internal lines -->
+              <mask id="wmKeyOutline" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <g fill="#fff">
+                  <circle cx="49.8" cy="30.7" r="9.9"/>
+                  <rect x="49.8" y="26.7" width="46" height="8" rx="4" transform="rotate(10.93 49.8 30.7)"/>
+                  <circle cx="49.8" cy="69" r="9.9"/>
+                  <rect x="49.8" y="65" width="46" height="8" rx="4" transform="rotate(190.93 49.8 69)"/>
+                </g>
+                <g fill="#000">
+                  <circle cx="49.8" cy="30.7" r="9.5"/>
+                  <rect x="49.8" y="27.1" width="46" height="7.2" rx="3.6" transform="rotate(10.93 49.8 30.7)"/>
+                  <circle cx="49.8" cy="69" r="9.5"/>
+                  <rect x="49.8" y="65.4" width="46" height="7.2" rx="3.6" transform="rotate(190.93 49.8 69)"/>
+                </g>
+              </mask>
+            </defs>
+            <!-- shield outline -->
+            <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="none" stroke="#B5924A" stroke-width="0.55" stroke-linejoin="round"/>
+            <!-- clean keyhole outlines, clipped to the shield -->
+            <g clip-path="url(#wmClip)"><rect width="100" height="100" fill="#B5924A" mask="url(#wmKeyOutline)"/></g>
           </svg>
         </div>
 
