@@ -112,7 +112,7 @@
   }
   .cert__engrave .shield-wm{
     position:absolute;left:50%;top:clamp(150px,26%,300px);transform:translate(-50%,-50%);
-    width:clamp(260px,34vw,440px);height:auto;opacity:.05;
+    width:clamp(260px,34vw,440px);height:auto;opacity:.06;
   }
   /* registry microtext ribbon along the top inner rule */
   .cert__microtext{
@@ -307,18 +307,22 @@
             </g>
           </svg>
 
-          <!-- large faint keyhole-shield watermark, centred behind the headline -->
+          <!-- large faint keyhole-shield watermark, true to the logo: a gold shield
+               with the two keyholes carved out as negative space, centred behind the headline -->
           <svg class="shield-wm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs><clipPath id="wmSh"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath></defs>
-            <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="none" stroke="#B5924A" stroke-width="1.4"/>
-            <g clip-path="url(#wmSh)">
-              <path d="M49.8 30.7 99 40.2" stroke="#B5924A" stroke-width="3.4" fill="none"/>
-              <path d="M49.8 69 1 59.5" stroke="#B5924A" stroke-width="3.4" fill="none"/>
-              <circle cx="49.8" cy="30.7" r="9.9" fill="none" stroke="#B5924A" stroke-width="1.6"/>
-              <circle cx="49.8" cy="69" r="9.9" fill="none" stroke="#B5924A" stroke-width="1.6"/>
-              <circle cx="49.8" cy="30.7" r="5.2" fill="none" stroke="#B5924A" stroke-width="1.1"/>
-              <circle cx="49.8" cy="69" r="5.2" fill="none" stroke="#B5924A" stroke-width="1.1"/>
-            </g>
+            <defs>
+              <mask id="wmKey" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <rect width="100" height="100" fill="#000"/>
+                <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="#fff"/>
+                <path d="M49.8 30.7 99 40.2" stroke="#000" stroke-width="8" fill="none"/>
+                <path d="M49.8 69 1 59.5" stroke="#000" stroke-width="8" fill="none"/>
+                <circle cx="49.8" cy="30.7" r="9.9" fill="#000"/>
+                <circle cx="49.8" cy="69" r="9.9" fill="#000"/>
+                <circle cx="49.8" cy="30.7" r="5.2" fill="#fff"/>
+                <circle cx="49.8" cy="69" r="5.2" fill="#fff"/>
+              </mask>
+            </defs>
+            <rect width="100" height="100" fill="#B5924A" mask="url(#wmKey)"/>
           </svg>
         </div>
 
