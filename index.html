@@ -66,13 +66,16 @@
 
   /* ============ hero — GUILLOCHÉ CERTIFICATE ============ */
   .hero{position:relative;padding:clamp(44px,6vh,72px) 0 clamp(52px,7vw,84px);
-    background:radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.13),transparent 62%),linear-gradient(175deg,#00351E 0%,#002A18 100%);
+    background:
+      radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.13),transparent 62%),
+      repeating-radial-gradient(circle at 50% 46%, transparent 0 46px, rgba(217,203,137,.055) 46px 47px),
+      linear-gradient(175deg,#00351E 0%,#002A18 100%);
     overflow:hidden}
   .hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .hero__bg svg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(1700px,160vw);height:auto;opacity:.05}
-  .hero__bg::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:screen;
+  .hero__bg svg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(2200px,200vw);height:auto;opacity:.05}
+  .hero__bg::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:screen;
     background-image:repeating-linear-gradient(115deg,rgba(217,203,137,0) 0 6px,rgba(217,203,137,.55) 6px 6.7px),repeating-linear-gradient(65deg,rgba(217,203,137,0) 0 9px,rgba(217,203,137,.4) 9px 9.5px);
-    -webkit-mask-image:radial-gradient(120% 80% at 50% 120%,#000,transparent 70%);mask-image:radial-gradient(120% 80% at 50% 120%,#000,transparent 70%)}
+    -webkit-mask-image:radial-gradient(165% 150% at 50% 46%,#000 58%,transparent 100%);mask-image:radial-gradient(165% 150% at 50% 46%,#000 58%,transparent 100%)}
   .hero__cert{position:relative;z-index:1;padding:clamp(40px,5vw,66px) clamp(30px,6vw,90px) 0;
     background:linear-gradient(180deg,#FBF8F0,#F6F3EA 55%);border:2px solid var(--gold);
     box-shadow:0 34px 90px rgba(0,0,0,.42),0 4px 18px rgba(0,0,0,.25),inset 0 0 0 1px rgba(251,248,240,.6)}
