@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securitise — Security-first IT, in writing</title>
+<meta name="description" content="Securitise is a security-first IT practice for UK businesses. Cyber Essentials Plus for every client. Senior engineers on every call. Every promise in writing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EA;
+    --paper-2:#EFEBDD;
+    --brg:#004225;
+    --brg-deep:#00351E;
+    --brg-ink:#0C2E1E;
+    --ink-soft:#48604F;
+    --gold:#B5924A;
+    --gold-bright:#C9A040;
+    --gold-faint:#D9CB89;
+    --hairline:#C9BD9E;
+    --serif:'Fraunces',Georgia,serif;
+    --mono:'IBM Plex Mono',monospace;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--brg-ink);
+    font-family:var(--sans);
+    font-size:16.5px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:clip;
+  }
+  /* paper grain */
+  body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.78 0 0 0 0 0.75 0 0 0 0 0.66 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--brg);color:var(--paper)}
+  :focus-visible{outline:2px solid var(--brg);outline-offset:4px}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+
+  .frame{max-width:1380px;margin:0 auto;padding:0 clamp(20px,4vw,72px);position:relative;z-index:2}
+
+  /* ============ top bar (IDENTICAL — do not restyle) ============ */
+  .bar{position:sticky;top:0;z-index:60;background:rgba(0,42,24,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,160,64,.38);color:var(--paper)}
+  .bar .bar__reg{color:#9DBCA9}
+  .bar .btn--solid{background:var(--gold-bright);border-color:var(--gold-bright);color:#14100A}
+  .bar .btn--solid:hover{background:#DDB452;border-color:#DDB452;color:#14100A}
+  .bar__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;gap:24px}
+  .bar__brand{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-size:13.5px;letter-spacing:.3em;font-weight:500}
+  .bar__brand i{font-style:normal;color:var(--gold-bright)}
+  .bar__reg{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-soft);text-align:center;text-transform:uppercase}
+  .bar__cta{justify-self:end}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--brg);color:var(--brg);background:transparent;transition:background .25s,color .25s;cursor:pointer}
+  .btn:hover{background:var(--brg);color:var(--paper)}
+  .btn--solid{background:var(--brg);color:var(--paper)}
+  .btn--solid:hover{background:var(--brg-deep)}
+  .btn--gold{border-color:var(--gold);color:var(--gold-bright)}
+  .btn--gold:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--brg-deep)}
+  .bar .btn{padding:9px 18px;font-size:10.5px}
+
+  /* ============================================================
+     HERO — DIRECTION 3 · "ENGINEERED / REGISTRATION"
+     Security-blueprint background + engineered registration card.
+     ============================================================ */
+  .hero{
+    position:relative;
+    padding:clamp(44px,6vh,72px) 0 clamp(52px,7vw,84px);
+    overflow:hidden;
+    /* keep the top gold radial; BRG plate base */
+    background:
+      radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.15),transparent 62%),
+      linear-gradient(175deg,#00351E 0%,#002A18 100%);
+  }
+
+  /* ---- BACKGROUND LAYER 1 : huge concentric SHIELD-CONTOUR blueprint ----
+     The keyhole shield silhouette echoed as nested offset outlines, blown
+     up to OS-map scale, bleeding off the right edge. gold hairlines @ ~0.05 */
+  .hero__blueprint{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    opacity:.9;mix-blend-mode:screen;
+  }
+  .hero__blueprint svg{
+    position:absolute;
+    top:50%;left:62%;
+    width:min(1500px,135vw);height:auto;
+    transform:translate(-50%,-50%);
+  }
+  .hero__blueprint .contour{fill:none;stroke:#C9A040;stroke-width:.45;vector-effect:non-scaling-stroke;opacity:.055}
+  .hero__blueprint .contour--key{opacity:.075}
+
+  /* ---- BACKGROUND LAYER 2 : fine technical survey grid ---- */
+  .hero__grid{
+    position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:
+      linear-gradient(rgba(201,160,64,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(201,160,64,.05) 1px,transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(120% 100% at 50% 30%,#000 38%,transparent 78%);
+            mask-image:radial-gradient(120% 100% at 50% 30%,#000 38%,transparent 78%);
+  }
+
+  /* ---- BACKGROUND LAYER 3 : faint blueprint margin labels (corners of the plate) ---- */
+  .hero__plate-ref{
+    position:absolute;z-index:0;pointer-events:none;
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:rgba(201,160,64,.32);
+  }
+  .hero__plate-ref--tl{top:clamp(18px,2.4vw,30px);left:clamp(20px,4vw,72px)}
+  .hero__plate-ref--br{bottom:clamp(18px,2.4vw,30px);right:clamp(20px,4vw,72px)}
+
+  /* ============ THE CARD — engineered registration sheet ============ */
+  .hero__cert{
+    position:relative;
+    /* light ivory specimen, faintly cool-engineered, not flat white */
+    background:
+      linear-gradient(180deg,#FBF8F0,#F4F0E5 100%);
+    border:1px solid var(--hairline);
+    /* engineered double-rule frame instead of a single offset outline */
+    outline:1px solid rgba(201,160,64,.5);outline-offset:7px;
+    padding:clamp(46px,5.4vw,72px) clamp(30px,6vw,92px) 0;
+    box-shadow:0 34px 90px rgba(0,0,0,.42),0 4px 18px rgba(0,0,0,.25);
+    isolation:isolate;
+  }
+
+  /* card surface ornament (all behind content, low-opacity) */
+  .hero__cert > .cert-ink{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+
+  /* — faint large concentric SHIELD CONTOUR watermark on the card — */
+  .cert-watermark{
+    position:absolute;top:50%;left:50%;
+    width:min(560px,86%);height:auto;
+    transform:translate(-50%,-48%);
+    opacity:1;
+  }
+  .cert-watermark .wm{fill:none;stroke:var(--gold);stroke-width:.6;vector-effect:non-scaling-stroke;opacity:.06}
+  .cert-watermark .wm--key{opacity:.085}
+
+  /* — faint measured baseline / tick-ruler down the left inner edge — */
+  .cert-ruler{
+    position:absolute;left:14px;top:74px;bottom:74px;width:14px;z-index:0;pointer-events:none;
+    background-image:
+      /* long ticks every 5th */
+      repeating-linear-gradient(to bottom,rgba(181,146,74,.34) 0 1px,transparent 1px 60px),
+      /* short ticks */
+      repeating-linear-gradient(to bottom,rgba(181,146,74,.2) 0 1px,transparent 1px 12px);
+    background-size:14px 60px,7px 12px;
+    background-repeat:repeat-y;
+    background-position:left top,left top;
+  }
+  .cert-ruler::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(181,146,74,.28);
+  }
+
+  /* — REGISTRATION / CROP MARKS at the four corners (thin gold L-marks) — */
+  .cert-crop{position:absolute;width:22px;height:22px;z-index:2;pointer-events:none}
+  .cert-crop::before,.cert-crop::after{content:"";position:absolute;background:var(--gold);opacity:.85}
+  .cert-crop::before{width:22px;height:1px}
+  .cert-crop::after{width:1px;height:22px}
+  .cert-crop--tl{top:-7px;left:-7px}
+  .cert-crop--tl::before{top:0;left:0}.cert-crop--tl::after{top:0;left:0}
+  .cert-crop--tr{top:-7px;right:-7px}
+  .cert-crop--tr::before{top:0;right:0}.cert-crop--tr::after{top:0;right:0}
+  .cert-crop--bl{bottom:-7px;left:-7px}
+  .cert-crop--bl::before{bottom:0;left:0}.cert-crop--bl::after{bottom:0;left:0}
+  .cert-crop--br{bottom:-7px;right:-7px}
+  .cert-crop--br::before{bottom:0;right:0}.cert-crop--br::after{bottom:0;right:0}
+
+  /* — registration target marks (cross-in-circle) at top corners — */
+  .cert-target{position:absolute;top:-7px;width:13px;height:13px;z-index:2;pointer-events:none}
+  .cert-target--l{left:calc(50% - 86px)}
+  .cert-target--r{left:calc(50% + 73px)}
+  .cert-target svg{display:block}
+  .cert-target .rt{fill:none;stroke:var(--gold);stroke-width:.9;opacity:.7}
+
+  /* — small mono coordinate / registration labels tucked in corners — */
+  .cert-reg{position:absolute;z-index:2;font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.85;white-space:nowrap}
+  .cert-reg--tl{top:13px;left:24px}
+  .cert-reg--tr{top:13px;right:24px}
+  .cert-reg--bl{bottom:13px;left:24px}
+  .cert-reg--br{bottom:13px;right:24px}
+  .cert-reg b{color:var(--brg);font-weight:500}
+
+  /* keep all hero content above the ornament */
+  .hero__cert > .hero__eyebrow,
+  .hero__cert > h1,
+  .hero__cert > .hero__sub,
+  .hero__cert > .hero__ctas,
+  .hero__cert > .hero__registry{position:relative;z-index:1}
+
+  .hero__eyebrow{display:flex;align-items:center;gap:18px;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(28px,4vw,44px)}
+  .hero__eyebrow::before,.hero__eyebrow::after{content:"";height:1px;width:clamp(30px,6vw,90px);background:var(--hairline)}
+  .hero h1{font-family:var(--serif);font-weight:300;text-align:center;font-size:clamp(46px,7.2vw,108px);line-height:1.02;letter-spacing:-.015em;color:var(--brg)}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--brg-ink)}
+  .hero h1 .gold{color:var(--gold-bright)}
+  .hero__sub{max-width:620px;margin:clamp(26px,3.4vw,40px) auto 0;text-align:center;font-size:18px;color:var(--ink-soft)}
+  .hero__sub strong{color:var(--brg-ink);font-weight:600}
+  .hero__ctas{display:flex;gap:14px;justify-content:center;margin:clamp(30px,4vw,46px) 0 0;flex-wrap:wrap}
+  .hero__registry{margin-top:clamp(34px,4.4vw,54px);border-top:1px solid var(--hairline);display:grid;grid-template-columns:repeat(3,1fr)}
+  .hreg{padding:22px 18px 26px;text-align:center;border-left:1px solid var(--hairline)}
+  .hreg:first-child{border-left:none}
+  .hreg .mono{display:block;font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+  .hreg p{font-family:var(--serif);font-size:19px;color:var(--brg);line-height:1.35}
+  .hero__seal{position:absolute;right:clamp(-46px,-3vw,-20px);bottom:148px;width:116px;height:116px;z-index:3;filter:drop-shadow(0 8px 18px rgba(0,53,30,.25));animation:sealin 1.2s cubic-bezier(.2,.8,.25,1) both .4s}
+  @keyframes sealin{from{opacity:0;transform:scale(.7) rotate(-18deg)}to{opacity:1;transform:scale(1) rotate(-8deg)}}
+
+  /* ============ section scaffolding (sliver below) ============ */
+  .sect{padding:clamp(52px,7vw,92px) 0}
+  .sect--band{background:var(--paper-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .sect__head{position:relative;display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,44px);align-items:baseline;border-bottom:1px solid var(--hairline);padding-bottom:20px;margin-bottom:clamp(28px,3.6vw,46px)}
+  .sect__head::after{content:attr(data-num);position:absolute;right:-10px;bottom:-12px;font-family:var(--serif);font-weight:300;font-size:clamp(110px,15vw,200px);line-height:.7;color:rgba(181,146,74,.13);pointer-events:none;z-index:0}
+  .sect__head>*{position:relative;z-index:1}
+  .sect__no{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--gold);white-space:nowrap}
+  .sect__title{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.6vw,62px);line-height:1.05;color:var(--brg)}
+  .sect__title em{font-style:italic}
+  .sliver{padding-top:clamp(40px,5vw,60px);padding-bottom:0;max-height:160px;overflow:hidden}
+
+  @media (max-width:960px){
+    .bar__reg{display:none}
+    .bar__inner{grid-template-columns:1fr auto}
+    .hero__registry{grid-template-columns:1fr}
+    .hreg{border-left:none;border-top:1px solid var(--hairline)}
+    .hreg:first-child{border-top:none}
+    .hero__seal{width:78px;height:78px;right:-24px;bottom:auto;top:-30px}
+    .cert-ruler{display:none}
+    .cert-reg--bl,.cert-reg--br{display:none}
+    .cert-target--l{left:calc(50% - 64px)}
+    .cert-target--r{left:calc(50% + 52px)}
+    .sect__head::after{font-size:88px;right:0;bottom:-8px}
+  }
+  @media (max-width:560px){
+    .cert-reg{font-size:8px;letter-spacing:.14em}
+    .cert-reg--tl{left:16px}.cert-reg--tr{right:16px}
+    .cert-target{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- TOP BAR (IDENTICAL TO BASELINE) -->
+<header class="bar">
+  <div class="frame bar__inner">
+    <a href="#" class="bar__brand" aria-label="Securitise home">
+      <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><clipPath id="barSh"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath></defs>
+        <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="#C9A040"/>
+        <g clip-path="url(#barSh)">
+          <path d="M49.8 30.7 99 40.2" stroke="#002A18" stroke-width="8" fill="none"/>
+          <path d="M49.8 69 1 59.5" stroke="#002A18" stroke-width="8" fill="none"/>
+          <circle cx="49.8" cy="30.7" r="9.9" fill="#002A18"/><circle cx="49.8" cy="69" r="9.9" fill="#002A18"/>
+          <circle cx="49.8" cy="30.7" r="5.9" fill="#FFFFFF"/><circle cx="49.8" cy="69" r="5.9" fill="#FFFFFF"/>
+        </g>
+      </svg>
+      <span>SECUR<i>IT</i>ISE</span>
+    </a>
+    <div class="bar__reg">Security-first IT practice · Registered in England No. 14518317</div>
+    <div class="bar__cta"><a class="btn btn--solid" href="#begin">Request a consultation</a></div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+
+    <!-- BACKGROUND: huge concentric shield-contour blueprint, bleeding off the right edge -->
+    <div class="hero__blueprint" aria-hidden="true">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+        <!-- 7 nested offset outlines of the keyhole shield (topographic / OS-map style).
+             Scaled & translated about the shield centroid (50,52) so they nest concentrically. -->
+        <g transform="translate(50 52)">
+          <g transform="scale(2.55) translate(-50 -52)"><path class="contour" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(2.15) translate(-50 -52)"><path class="contour" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(1.78) translate(-50 -52)"><path class="contour" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(1.44) translate(-50 -52)"><path class="contour" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(1.14) translate(-50 -52)"><path class="contour" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(.88) translate(-50 -52)"><path class="contour contour--key" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+          <g transform="scale(.66) translate(-50 -52)"><path class="contour contour--key" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- BACKGROUND: fine survey grid -->
+    <div class="hero__grid" aria-hidden="true"></div>
+
+    <!-- BACKGROUND: blueprint margin labels on the plate -->
+    <div class="hero__plate-ref hero__plate-ref--tl mono" aria-hidden="true">PLATE 01 · SHIELD CONTOUR</div>
+    <div class="hero__plate-ref hero__plate-ref--br mono" aria-hidden="true">SCALE 1:1 · LON · MMXXII</div>
+
+    <div class="frame">
+      <div class="hero__cert">
+
+        <!-- card surface ornament: shield watermark + ruler -->
+        <div class="cert-ink" aria-hidden="true">
+          <svg class="cert-watermark" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(50 52)">
+              <g transform="scale(1.34) translate(-50 -52)"><path class="wm" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <g transform="scale(1.16) translate(-50 -52)"><path class="wm" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <g transform="scale(1.0) translate(-50 -52)"><path class="wm" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <g transform="scale(.84) translate(-50 -52)"><path class="wm" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <g transform="scale(.68) translate(-50 -52)"><path class="wm wm--key" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <g transform="scale(.52) translate(-50 -52)"><path class="wm wm--key" d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></g>
+              <!-- keyhole pins on the innermost outline, hairline -->
+              <g transform="scale(.52) translate(-50 -52)" opacity=".09">
+                <circle cx="49.8" cy="30.7" r="6.4" fill="none" stroke="#B5924A" stroke-width="1.4"/>
+                <circle cx="49.8" cy="69" r="6.4" fill="none" stroke="#B5924A" stroke-width="1.4"/>
+              </g>
+            </g>
+          </svg>
+          <div class="cert-ruler"></div>
+        </div>
+
+        <!-- registration corner marks -->
+        <span class="cert-crop cert-crop--tl"></span>
+        <span class="cert-crop cert-crop--tr"></span>
+        <span class="cert-crop cert-crop--bl"></span>
+        <span class="cert-crop cert-crop--br"></span>
+
+        <!-- registration targets flanking the centre top -->
+        <span class="cert-target cert-target--l"><svg width="13" height="13" viewBox="0 0 13 13"><circle class="rt" cx="6.5" cy="6.5" r="4.6"/><line class="rt" x1="6.5" y1="0" x2="6.5" y2="13"/><line class="rt" x1="0" y1="6.5" x2="13" y2="6.5"/></svg></span>
+        <span class="cert-target cert-target--r"><svg width="13" height="13" viewBox="0 0 13 13"><circle class="rt" cx="6.5" cy="6.5" r="4.6"/><line class="rt" x1="6.5" y1="0" x2="6.5" y2="13"/><line class="rt" x1="0" y1="6.5" x2="13" y2="6.5"/></svg></span>
+
+        <!-- mono coordinate / registration labels in the corners -->
+        <span class="cert-reg cert-reg--tl">REF · <b>14518317</b></span>
+        <span class="cert-reg cert-reg--tr">FIG. 01</span>
+        <span class="cert-reg cert-reg--bl">SHEET 1 / 1</span>
+        <span class="cert-reg cert-reg--br">REV · MMXXII</span>
+
+        <p class="hero__eyebrow">Safeguard · Support · Standardise</p>
+        <h1>Most MSPs <em>add</em> security.<br>We <span class="gold">start</span> with it.</h1>
+        <p class="hero__sub">Securitise is a security-first IT practice for UK businesses of 20–150 people. Every client certified to <strong>Cyber Essentials Plus</strong>. Every call answered by a <strong>senior engineer</strong>. Every promise <strong>in writing</strong>.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--solid" href="#begin">Request a consultation</a>
+          <a class="btn" href="#standard">Read the Standard</a>
+        </div>
+        <div class="hero__registry" role="list" aria-label="The three undertakings">
+          <div class="hreg" role="listitem"><span class="mono">Undertaking I</span><p>Cyber Essentials Plus,<br>for every client</p></div>
+          <div class="hreg" role="listitem"><span class="mono">Undertaking II</span><p>Senior engineers only,<br>on every call</p></div>
+          <div class="hreg" role="listitem"><span class="mono">Undertaking III</span><p>The work evidenced<br>weekly, in plain English</p></div>
+        </div>
+        <!-- seal -->
+        <svg class="hero__seal" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="57" fill="#004225"/>
+          <circle cx="60" cy="60" r="57" fill="none" stroke="#C9A040" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="#C9A040" stroke-width="0.75"/>
+          <path id="sealArcT" d="M 60 60 m -38 0 a 38 38 0 1 1 76 0" fill="none"/>
+          <path id="sealArcB" d="M 60 60 m -38 0 a 38 38 0 1 0 76 0" fill="none"/>
+          <text font-family="IBM Plex Mono,monospace" font-size="8.2" letter-spacing="2.6" fill="#C9A040"><textPath href="#sealArcT" startOffset="8%">SECURITISE · LONDON</textPath></text>
+          <text font-family="IBM Plex Mono,monospace" font-size="8.2" letter-spacing="2.4" fill="#C9A040"><textPath href="#sealArcB" startOffset="14%">EST · MMXXII</textPath></text>
+          <g transform="translate(40,40) scale(.4)">
+            <defs><clipPath id="sealSh"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath></defs>
+            <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="#C9A040"/>
+            <g clip-path="url(#sealSh)">
+              <path d="M49.8 30.7 99 40.2" stroke="#004225" stroke-width="8" fill="none"/>
+              <path d="M49.8 69 1 59.5" stroke="#004225" stroke-width="8" fill="none"/>
+              <circle cx="49.8" cy="30.7" r="9.9" fill="#004225"/><circle cx="49.8" cy="69" r="9.9" fill="#004225"/>
+              <circle cx="49.8" cy="30.7" r="5.9" fill="#FFFFFF"/><circle cx="49.8" cy="69" r="5.9" fill="#FFFFFF"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIVER OF NEXT SECTION — PART I — THE RECORD (heading row only) -->
+  <section class="sect sect--band sliver" aria-label="The case for change">
+    <div class="frame">
+      <div class="sect__head" data-num="I">
+        <span class="sect__no">PART I — THE RECORD</span>
+        <h2 class="sect__title">What UK businesses say about their <em>current</em> provider.</h2>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

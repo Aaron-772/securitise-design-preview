@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securitise — Hero design options</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F6F3EA;--brg:#004225;--brg-deep:#00351E;--ink:#0C2E1E;--soft:#48604F;--gold:#B5924A;--goldb:#C9A040;--line:#C9BD9E}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E8E3D5;color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  header{background:var(--brg-deep);color:var(--paper);padding:30px clamp(20px,4vw,56px);border-bottom:2px solid rgba(201,160,64,.4)}
+  header .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--goldb)}
+  header h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);margin-top:8px}
+  header p{color:#B9D2BF;margin-top:8px;max-width:760px;font-size:15px}
+  .grid{display:flex;flex-direction:column;gap:0}
+  .opt{border-bottom:14px solid var(--brg-deep)}
+  .opt__bar{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;padding:18px clamp(20px,4vw,56px);background:var(--paper);border-bottom:1px solid var(--line)}
+  .opt__no{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--gold)}
+  .opt__name{font-family:'Fraunces',serif;font-size:23px;color:var(--brg)}
+  .opt__desc{font-size:14px;color:var(--soft);flex:1;min-width:260px}
+  .opt__open{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brg);border:1px solid var(--brg);padding:8px 14px;text-decoration:none;white-space:nowrap}
+  .opt__open:hover{background:var(--brg);color:var(--paper)}
+  .framewrap{position:relative;width:100%;height:760px;overflow:hidden;background:var(--brg-deep)}
+  iframe{width:1440px;height:1140px;border:0;transform:scale(.72);transform-origin:top left;pointer-events:none}
+  @media(max-width:1500px){iframe{transform:scale(.62)}.framewrap{height:680px}}
+  @media(max-width:1100px){iframe{transform:scale(.46)}.framewrap{height:540px}}
+  @media(max-width:760px){iframe{transform:scale(.34)}.framewrap{height:430px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="k">Securitise · The Written Standard</div>
+  <h1>Hero — six design options</h1>
+  <p>Each addresses both notes: the card is no longer plain white, and the green behind it is no longer a flat panel. The top bar is identical across all six so you're comparing only the hero. Click “Open full” to view any option at full size and scroll the whole page.</p>
+</header>
+<div class="grid">
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 01</span><span class="opt__name">Guilloché Certificate</span><span class="opt__desc">Banknote-style gold engine-turned engraving, filigree corners, microtext rule and a shield watermark on the card; engine-turned green behind it.</span><a class="opt__open" href="hero-opt-1.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-1.html" loading="lazy" title="Option 1"></iframe></div>
+  </section>
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 02</span><span class="opt__name">The Banker's Desk</span><span class="opt__desc">Warm cream card with letterpress deboss and gold-foil rules, laid on a gilt-tooled green leather blotter.</span><a class="opt__open" href="hero-opt-2.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-2.html" loading="lazy" title="Option 2"></iframe></div>
+  </section>
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 03</span><span class="opt__name">Engineered / Registration</span><span class="opt__desc">Crop marks, registration targets, blueprint margin labels and a concentric shield-contour watermark — precise and technical.</span><a class="opt__open" href="hero-opt-3.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-3.html" loading="lazy" title="Option 3"></iframe></div>
+  </section>
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 04</span><span class="opt__name">Warm Tonal Spotlight</span><span class="opt__desc">Card glows ivory→parchment under a soft radial spotlight, with a ghosted shield rising behind it — the restrained, elegant pick.</span><a class="opt__open" href="hero-opt-4.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-4.html" loading="lazy" title="Option 4"></iframe></div>
+  </section>
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 05</span><span class="opt__name">Dark Card Inversion</span><span class="opt__desc">Flips it entirely — a deep racing-green certificate on warm parchment. Kills “too white” outright; the boldest swing.</span><a class="opt__open" href="hero-opt-5.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-5.html" loading="lazy" title="Option 5"></iframe></div>
+  </section>
+  <section class="opt">
+    <div class="opt__bar"><span class="opt__no">OPTION 06</span><span class="opt__name">Heraldic / Sealed</span><span class="opt__desc">Gold acanthus corners, a damask motif, the eyebrow on an engraved ribbon and a wax-seal relief — regal and classic.</span><a class="opt__open" href="hero-opt-6.html" target="_blank">Open full ↗</a></div>
+    <div class="framewrap"><iframe src="hero-opt-6.html" loading="lazy" title="Option 6"></iframe></div>
+  </section>
+</div>
+</body>
+</html>
