@@ -64,9 +64,29 @@
   .btn--gold:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--brg-deep)}
   .bar .btn{padding:9px 18px;font-size:10.5px}
 
-  /* ============ hero ============ */
-  .hero{position:relative;padding:clamp(44px,6vh,72px) 0 clamp(52px,7vw,84px);background:radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.13),transparent 62%),linear-gradient(175deg,#00351E 0%,#002A18 100%)}
-  .hero__cert{position:relative;border:1px solid var(--hairline);outline:1px solid rgba(201,160,64,.55);outline-offset:6px;padding:clamp(38px,5vw,64px) clamp(28px,6vw,88px) 0;background:linear-gradient(180deg,#FBF8F0,#F6F3EA 55%);box-shadow:0 34px 90px rgba(0,0,0,.42),0 4px 18px rgba(0,0,0,.25)}
+  /* ============ hero — GUILLOCHÉ CERTIFICATE ============ */
+  .hero{position:relative;padding:clamp(44px,6vh,72px) 0 clamp(52px,7vw,84px);
+    background:radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.13),transparent 62%),linear-gradient(175deg,#00351E 0%,#002A18 100%);
+    overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .hero__bg svg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(1700px,160vw);height:auto;opacity:.05}
+  .hero__bg::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:screen;
+    background-image:repeating-linear-gradient(115deg,rgba(217,203,137,0) 0 6px,rgba(217,203,137,.55) 6px 6.7px),repeating-linear-gradient(65deg,rgba(217,203,137,0) 0 9px,rgba(217,203,137,.4) 9px 9.5px);
+    -webkit-mask-image:radial-gradient(120% 80% at 50% 120%,#000,transparent 70%);mask-image:radial-gradient(120% 80% at 50% 120%,#000,transparent 70%)}
+  .hero__cert{position:relative;z-index:1;padding:clamp(40px,5vw,66px) clamp(30px,6vw,90px) 0;
+    background:linear-gradient(180deg,#FBF8F0,#F6F3EA 55%);border:2px solid var(--gold);
+    box-shadow:0 34px 90px rgba(0,0,0,.42),0 4px 18px rgba(0,0,0,.25),inset 0 0 0 1px rgba(251,248,240,.6)}
+  .hero__cert::before{content:"";position:absolute;inset:7px;pointer-events:none;z-index:2;border:1px solid rgba(181,146,74,.62)}
+  .cert__engrave{position:absolute;inset:7px;z-index:0;pointer-events:none;overflow:hidden}
+  .cert__engrave .rosette{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);width:min(760px,118%);height:auto;opacity:.075}
+  .cert__engrave .shield-wm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(420px,56vw,720px);height:auto;opacity:.11}
+  .cert__microtext{position:absolute;top:11px;left:7px;right:7px;z-index:2;pointer-events:none;font-family:var(--mono);font-size:6.4px;line-height:1;letter-spacing:.04em;color:rgba(181,146,74,.5);white-space:nowrap;overflow:hidden;text-align:center;text-transform:uppercase}
+  .cert__corner{position:absolute;width:clamp(40px,5vw,68px);height:auto;z-index:2;pointer-events:none;opacity:.85}
+  .cert__corner--tl{top:6px;left:6px}
+  .cert__corner--tr{top:6px;right:6px;transform:scaleX(-1)}
+  .cert__corner--bl{bottom:6px;left:6px;transform:scaleY(-1)}
+  .cert__corner--br{bottom:6px;right:6px;transform:scale(-1,-1)}
+  .hero__cert>h1,.hero__cert>.hero__sub,.hero__cert>.hero__ctas,.hero__cert>.hero__registry{position:relative;z-index:3}
   .hero__eyebrow{display:flex;align-items:center;gap:18px;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(28px,4vw,44px)}
   .hero__eyebrow::before,.hero__eyebrow::after{content:"";height:1px;width:clamp(30px,6vw,90px);background:var(--hairline)}
   .hero h1{font-family:var(--serif);font-weight:300;text-align:center;font-size:clamp(46px,7.2vw,108px);line-height:1.02;letter-spacing:-.015em;color:var(--brg)}
@@ -80,7 +100,7 @@
   .hreg:first-child{border-left:none}
   .hreg .mono{display:block;font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
   .hreg p{font-family:var(--serif);font-size:19px;color:var(--brg);line-height:1.35}
-  .hero__seal{position:absolute;right:clamp(-46px,-3vw,-20px);bottom:148px;width:116px;height:116px;z-index:3;filter:drop-shadow(0 8px 18px rgba(0,53,30,.25));animation:sealin 1.2s cubic-bezier(.2,.8,.25,1) both .4s}
+  .hero__seal{position:absolute;right:clamp(-46px,-3vw,-20px);bottom:148px;width:116px;height:116px;z-index:5;filter:drop-shadow(0 8px 18px rgba(0,53,30,.25));animation:sealin 1.2s cubic-bezier(.2,.8,.25,1) both .4s}
   @keyframes sealin{from{opacity:0;transform:scale(.7) rotate(-18deg)}to{opacity:1;transform:scale(1) rotate(-8deg)}}
 
   /* ============ section scaffolding ============ */
@@ -222,6 +242,8 @@
     .hreg{border-left:none;border-top:1px solid var(--hairline)}
     .hreg:first-child{border-top:none}
     .hero__seal{width:78px;height:78px;right:-24px;bottom:auto;top:-30px}
+    .cert__engrave .shield-wm{top:50%;width:clamp(320px,82vw,480px)}
+    .cert__corner{width:34px}
     .sig__block{text-align:left}
     .sig__rule{margin:18px 0 0}
     .article{grid-template-columns:64px 1fr}
@@ -304,7 +326,7 @@
       </svg>
       <span>SECUR<i>IT</i>ISE</span>
     </a>
-    <div class="bar__reg">Security-first IT practice · Registered in England No. 14518317</div>
+    <div class="bar__reg">Safeguard · Support · Standardise</div>
     <div class="bar__cta"><a class="btn btn--solid" href="#begin">Request a consultation</a></div>
   </div>
 </header>
@@ -312,9 +334,78 @@
 <main>
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
+
+    <!-- BACKGROUND: banknote-back engine-turned guilloché filling the green field -->
+    <div class="hero__bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <g id="bgPetal">
+            <path d="M600 220 C 740 360, 840 460, 840 600 C 840 740, 740 840, 600 980 C 460 840, 360 740, 360 600 C 360 460, 460 360, 600 220 Z" fill="none" stroke="#D9CB89" stroke-width="1.1"/>
+          </g>
+        </defs>
+        <g stroke="#D9CB89" fill="none" stroke-width="1">
+          <circle cx="600" cy="600" r="540"/><circle cx="600" cy="600" r="500"/><circle cx="600" cy="600" r="455"/><circle cx="600" cy="600" r="300"/><circle cx="600" cy="600" r="150"/>
+        </g>
+        <g>
+          <use href="#bgPetal" transform="rotate(0 600 600)"/><use href="#bgPetal" transform="rotate(18 600 600)"/><use href="#bgPetal" transform="rotate(36 600 600)"/><use href="#bgPetal" transform="rotate(54 600 600)"/><use href="#bgPetal" transform="rotate(72 600 600)"/><use href="#bgPetal" transform="rotate(90 600 600)"/><use href="#bgPetal" transform="rotate(108 600 600)"/><use href="#bgPetal" transform="rotate(126 600 600)"/><use href="#bgPetal" transform="rotate(144 600 600)"/><use href="#bgPetal" transform="rotate(162 600 600)"/>
+        </g>
+        <g transform="translate(600 600) scale(.5) translate(-600 -600)">
+          <use href="#bgPetal" transform="rotate(9 600 600)"/><use href="#bgPetal" transform="rotate(27 600 600)"/><use href="#bgPetal" transform="rotate(45 600 600)"/><use href="#bgPetal" transform="rotate(63 600 600)"/><use href="#bgPetal" transform="rotate(81 600 600)"/><use href="#bgPetal" transform="rotate(99 600 600)"/><use href="#bgPetal" transform="rotate(117 600 600)"/><use href="#bgPetal" transform="rotate(135 600 600)"/><use href="#bgPetal" transform="rotate(153 600 600)"/><use href="#bgPetal" transform="rotate(171 600 600)"/>
+        </g>
+      </svg>
+    </div>
+
     <div class="frame">
       <div class="hero__cert">
-        <p class="hero__eyebrow">Safeguard · Support · Standardise</p>
+
+        <!-- ENGRAVED LAYER: guilloché rosette + keyhole-shield watermark -->
+        <div class="cert__engrave" aria-hidden="true">
+          <svg class="rosette" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <g id="certPetal"><ellipse cx="400" cy="400" rx="120" ry="350" fill="none" stroke="#B5924A" stroke-width="0.8"/></g>
+              <g id="certPetal2"><ellipse cx="400" cy="400" rx="70" ry="270" fill="none" stroke="#B5924A" stroke-width="0.6"/></g>
+            </defs>
+            <g stroke="#B5924A" fill="none">
+              <circle cx="400" cy="400" r="370" stroke-width="0.9"/><circle cx="400" cy="400" r="360" stroke-width="0.5"/><circle cx="400" cy="400" r="250" stroke-width="0.7"/><circle cx="400" cy="400" r="120" stroke-width="0.6"/><circle cx="400" cy="400" r="60" stroke-width="0.5"/>
+            </g>
+            <g>
+              <use href="#certPetal" transform="rotate(0 400 400)"/><use href="#certPetal" transform="rotate(10 400 400)"/><use href="#certPetal" transform="rotate(20 400 400)"/><use href="#certPetal" transform="rotate(30 400 400)"/><use href="#certPetal" transform="rotate(40 400 400)"/><use href="#certPetal" transform="rotate(50 400 400)"/><use href="#certPetal" transform="rotate(60 400 400)"/><use href="#certPetal" transform="rotate(70 400 400)"/><use href="#certPetal" transform="rotate(80 400 400)"/><use href="#certPetal" transform="rotate(90 400 400)"/><use href="#certPetal" transform="rotate(100 400 400)"/><use href="#certPetal" transform="rotate(110 400 400)"/><use href="#certPetal" transform="rotate(120 400 400)"/><use href="#certPetal" transform="rotate(130 400 400)"/><use href="#certPetal" transform="rotate(140 400 400)"/><use href="#certPetal" transform="rotate(150 400 400)"/><use href="#certPetal" transform="rotate(160 400 400)"/><use href="#certPetal" transform="rotate(170 400 400)"/>
+            </g>
+            <g>
+              <use href="#certPetal2" transform="rotate(5 400 400)"/><use href="#certPetal2" transform="rotate(20 400 400)"/><use href="#certPetal2" transform="rotate(35 400 400)"/><use href="#certPetal2" transform="rotate(50 400 400)"/><use href="#certPetal2" transform="rotate(65 400 400)"/><use href="#certPetal2" transform="rotate(80 400 400)"/><use href="#certPetal2" transform="rotate(95 400 400)"/><use href="#certPetal2" transform="rotate(110 400 400)"/><use href="#certPetal2" transform="rotate(125 400 400)"/><use href="#certPetal2" transform="rotate(140 400 400)"/><use href="#certPetal2" transform="rotate(155 400 400)"/><use href="#certPetal2" transform="rotate(170 400 400)"/>
+            </g>
+          </svg>
+
+          <!-- large faint keyhole-shield watermark, true to the logo: centred outline framework -->
+          <svg class="shield-wm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="wmClip"><path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z"/></clipPath>
+              <mask id="wmKeyOutline" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <g fill="#fff">
+                  <circle cx="49.8" cy="30.7" r="9.9"/><rect x="49.8" y="26.7" width="46" height="8" rx="4" transform="rotate(10.93 49.8 30.7)"/>
+                  <circle cx="49.8" cy="69" r="9.9"/><rect x="49.8" y="65" width="46" height="8" rx="4" transform="rotate(190.93 49.8 69)"/>
+                </g>
+                <g fill="#000">
+                  <circle cx="49.8" cy="30.7" r="9.5"/><rect x="49.8" y="27.1" width="46" height="7.2" rx="3.6" transform="rotate(10.93 49.8 30.7)"/>
+                  <circle cx="49.8" cy="69" r="9.5"/><rect x="49.8" y="65.4" width="46" height="7.2" rx="3.6" transform="rotate(190.93 49.8 69)"/>
+                </g>
+              </mask>
+            </defs>
+            <path d="M50 0 C44 6 36 9.5 28 10.5 C20 11.5 12.5 9.8 7 7 C6 30 10 55 22 73 C30 84 39 93 50 100 C61 93 70 84 78 73 C90 55 94 30 93 7 C87.5 9.8 80 11.5 72 10.5 C64 9.5 56 6 50 0 Z" fill="none" stroke="#B5924A" stroke-width="0.55" stroke-linejoin="round"/>
+            <g clip-path="url(#wmClip)"><rect width="100" height="100" fill="#B5924A" mask="url(#wmKeyOutline)"/></g>
+            <g fill="none" stroke="#B5924A" stroke-width="0.55"><circle cx="49.8" cy="30.7" r="5.3"/><circle cx="49.8" cy="69" r="5.3"/></g>
+          </svg>
+        </div>
+
+        <!-- registry microtext along the top inner rule -->
+        <div class="cert__microtext" aria-hidden="true">· SECURITISE · THE WRITTEN STANDARD · MMXXII · SECURITISE · THE WRITTEN STANDARD · MMXXII · SECURITISE · THE WRITTEN STANDARD · MMXXII · SECURITISE · THE WRITTEN STANDARD · MMXXII · SECURITISE · THE WRITTEN STANDARD · MMXXII · SECURITISE · THE WRITTEN STANDARD · MMXXII ·</div>
+
+        <!-- engraved filigree corner ornaments -->
+        <svg class="cert__corner cert__corner--tl" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#B5924A" stroke-width="1.1" stroke-linecap="round"><path d="M8 8 L8 40 M8 8 L40 8"/><path d="M14 14 C14 30 24 40 40 40 M14 14 C30 14 40 24 40 40"/><path d="M14 14 C14 26 22 34 34 34"/><path d="M40 40 C40 30 34 24 24 24 C20 24 18 27 18 30 C18 33 20 35 23 35"/><circle cx="23" cy="33" r="1.6" fill="#B5924A" stroke="none"/><path d="M8 48 C12 48 14 50 14 54 M48 8 C48 12 50 14 54 14"/></g></svg>
+        <svg class="cert__corner cert__corner--tr" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#B5924A" stroke-width="1.1" stroke-linecap="round"><path d="M8 8 L8 40 M8 8 L40 8"/><path d="M14 14 C14 30 24 40 40 40 M14 14 C30 14 40 24 40 40"/><path d="M14 14 C14 26 22 34 34 34"/><path d="M40 40 C40 30 34 24 24 24 C20 24 18 27 18 30 C18 33 20 35 23 35"/><circle cx="23" cy="33" r="1.6" fill="#B5924A" stroke="none"/><path d="M8 48 C12 48 14 50 14 54 M48 8 C48 12 50 14 54 14"/></g></svg>
+        <svg class="cert__corner cert__corner--bl" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#B5924A" stroke-width="1.1" stroke-linecap="round"><path d="M8 8 L8 40 M8 8 L40 8"/><path d="M14 14 C14 30 24 40 40 40 M14 14 C30 14 40 24 40 40"/><path d="M14 14 C14 26 22 34 34 34"/><path d="M40 40 C40 30 34 24 24 24 C20 24 18 27 18 30 C18 33 20 35 23 35"/><circle cx="23" cy="33" r="1.6" fill="#B5924A" stroke="none"/><path d="M8 48 C12 48 14 50 14 54 M48 8 C48 12 50 14 54 14"/></g></svg>
+        <svg class="cert__corner cert__corner--br" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#B5924A" stroke-width="1.1" stroke-linecap="round"><path d="M8 8 L8 40 M8 8 L40 8"/><path d="M14 14 C14 30 24 40 40 40 M14 14 C30 14 40 24 40 40"/><path d="M14 14 C14 26 22 34 34 34"/><path d="M40 40 C40 30 34 24 24 24 C20 24 18 27 18 30 C18 33 20 35 23 35"/><circle cx="23" cy="33" r="1.6" fill="#B5924A" stroke="none"/><path d="M8 48 C12 48 14 50 14 54 M48 8 C48 12 50 14 54 14"/></g></svg>
+
         <h1>Most MSPs <em>add</em> security.<br>We <span class="gold">start</span> with it.</h1>
         <p class="hero__sub">Securitise is a security-first IT practice for UK businesses of 20–150 people. Every client certified to <strong>Cyber Essentials Plus</strong>. Every call answered by a <strong>senior engineer</strong>. Every promise <strong>in writing</strong>.</p>
         <div class="hero__ctas">
@@ -633,10 +724,10 @@
 
 <footer>
   <div class="frame footer__grid">
-    <span>Securitise Limited · No. 14518317 · VAT GB454845662</span>
+    <span>Securitise Limited · Security-first IT practice</span>
+    <span>Registered in England No. 14518317 · VAT GB454845662</span>
     <span>20–22 Wenlock Road, London N1 7GU</span>
     <span><a href="mailto:hello@securitise.uk">hello@securitise.uk</a></span>
-    <span>Safeguard · Support · Standardise</span>
   </div>
 </footer>
 
