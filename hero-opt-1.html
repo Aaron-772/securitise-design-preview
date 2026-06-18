@@ -71,21 +71,15 @@
     padding:clamp(44px,6vh,72px) 0 clamp(52px,7vw,84px);
     background:
       radial-gradient(1100px 520px at 50% -8%,rgba(201,160,64,.13),transparent 62%),
-      repeating-radial-gradient(circle at 50% 46%, transparent 0 46px, rgba(217,203,137,.055) 46px 47px),
       linear-gradient(175deg,#00351E 0%,#002A18 100%);
     overflow:hidden;
   }
   /* large-scale engine-turned guilloché filling the green field (very faint gold ~0.04) */
   .hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .hero__bg svg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(2200px,200vw);height:auto;opacity:.05}
-  /* engine-turn weave carried full-bleed across the whole green field */
-  .hero__bg::after{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:screen;
-    background-image:repeating-linear-gradient(115deg,rgba(217,203,137,0) 0 6px,rgba(217,203,137,.55) 6px 6.7px),
-                     repeating-linear-gradient(65deg,rgba(217,203,137,0) 0 9px,rgba(217,203,137,.4) 9px 9.5px);
-    -webkit-mask-image:radial-gradient(165% 150% at 50% 46%,#000 58%,transparent 100%);
-            mask-image:radial-gradient(165% 150% at 50% 46%,#000 58%,transparent 100%);
-  }
+  .hero__bg svg{position:absolute;inset:0;width:100%;height:100%;opacity:1;
+    -webkit-mask-image:radial-gradient(150% 130% at 50% 44%,#000 50%,transparent 100%);
+            mask-image:radial-gradient(150% 130% at 50% 44%,#000 50%,transparent 100%)}
+  .hero__bg::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 38%,transparent 55%,rgba(0,33,18,.5))}
 
   /* CARD: an engraved share-certificate, framed in a double gold rule with filigree corners */
   .hero__cert{
@@ -204,54 +198,20 @@
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
 
-    <!-- BACKGROUND: banknote-back engine-turned guilloché filling the green field -->
+    <!-- BACKGROUND: cyber mesh — a node-and-link network across the green field -->
     <div class="hero__bg" aria-hidden="true">
-      <svg viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+      <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <!-- large engine-turned spirograph: nested epitrochoid-style rosette loops -->
-          <g id="bgPetal">
-            <path d="M600 220
-                     C 740 360, 840 460, 840 600
-                     C 840 740, 740 840, 600 980
-                     C 460 840, 360 740, 360 600
-                     C 360 460, 460 360, 600 220 Z"
-                  fill="none" stroke="#D9CB89" stroke-width="1.1"/>
-          </g>
+          <pattern id="cyberMesh" width="60" height="103.92" patternUnits="userSpaceOnUse" patternTransform="scale(1.3)">
+            <g fill="none" stroke="#B5924A" stroke-opacity="0.14" stroke-width="0.9">
+              <path d="M0 0 H60 M0 51.96 H60 M0 0 L30 51.96 M60 0 L30 51.96 M30 51.96 L0 103.92 M30 51.96 L60 103.92"/>
+            </g>
+            <g fill="#C9A040" fill-opacity="0.24">
+              <circle cx="0" cy="0" r="2"/><circle cx="60" cy="0" r="2"/><circle cx="30" cy="51.96" r="2"/><circle cx="0" cy="103.92" r="2"/><circle cx="60" cy="103.92" r="2"/>
+            </g>
+          </pattern>
         </defs>
-        <g stroke="#D9CB89" fill="none" stroke-width="1">
-          <!-- concentric guilloché rings -->
-          <circle cx="600" cy="600" r="540"/>
-          <circle cx="600" cy="600" r="500"/>
-          <circle cx="600" cy="600" r="455"/>
-          <circle cx="600" cy="600" r="300"/>
-          <circle cx="600" cy="600" r="150"/>
-        </g>
-        <!-- outer rosette ring: petal rotated around centre -->
-        <g>
-          <use href="#bgPetal" transform="rotate(0 600 600)"/>
-          <use href="#bgPetal" transform="rotate(18 600 600)"/>
-          <use href="#bgPetal" transform="rotate(36 600 600)"/>
-          <use href="#bgPetal" transform="rotate(54 600 600)"/>
-          <use href="#bgPetal" transform="rotate(72 600 600)"/>
-          <use href="#bgPetal" transform="rotate(90 600 600)"/>
-          <use href="#bgPetal" transform="rotate(108 600 600)"/>
-          <use href="#bgPetal" transform="rotate(126 600 600)"/>
-          <use href="#bgPetal" transform="rotate(144 600 600)"/>
-          <use href="#bgPetal" transform="rotate(162 600 600)"/>
-        </g>
-        <!-- inner counter-rotated rosette, scaled down, for the engine-turned moiré -->
-        <g transform="translate(600 600) scale(.5) translate(-600 -600)">
-          <use href="#bgPetal" transform="rotate(9 600 600)"/>
-          <use href="#bgPetal" transform="rotate(27 600 600)"/>
-          <use href="#bgPetal" transform="rotate(45 600 600)"/>
-          <use href="#bgPetal" transform="rotate(63 600 600)"/>
-          <use href="#bgPetal" transform="rotate(81 600 600)"/>
-          <use href="#bgPetal" transform="rotate(99 600 600)"/>
-          <use href="#bgPetal" transform="rotate(117 600 600)"/>
-          <use href="#bgPetal" transform="rotate(135 600 600)"/>
-          <use href="#bgPetal" transform="rotate(153 600 600)"/>
-          <use href="#bgPetal" transform="rotate(171 600 600)"/>
-        </g>
+        <rect width="100%" height="100%" fill="url(#cyberMesh)"/>
       </svg>
     </div>
 
